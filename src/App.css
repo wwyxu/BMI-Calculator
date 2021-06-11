@@ -5,6 +5,12 @@
   }
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .heading {
   border-bottom: 2px solid #999999;
 }
@@ -52,4 +58,45 @@
 
 .card_very {
   border-left: 5px solid #c41414;
+}
+
+/*---------------------------------------------------------------*/
+
+.full-height {
+  min-height: 100vh;
+}
+
+.light-mode {
+  background-color: rgb(219, 219, 219);
+  color: #333;
+  transition: background-color 0.25s ease-out;
+}
+
+.dark-mode {
+  background-color: #202020;
+  color: #999;
+  transition: background-color 0.25s ease-out;
+}
+
+.bg_dark {
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+}
+
+.light-shadow {
+  box-shadow: 0 0 11px rgba(179, 179, 179, 0.2);
+}
+
+.fa-sun {
+  font-size: 2em;
+  padding-top: 10px;
+  cursor: pointer;
+  transition: 0.25s ease-out;
+}
+
+.fa-moon {
+  font-size: 2em;
+  padding-top: 10px;
+  cursor: pointer;
+  transition: 0.25s ease-out;
 }

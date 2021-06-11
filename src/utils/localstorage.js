@@ -1,6 +1,6 @@
 export const getData = (key) => {
   if (!localStorage) {
-    return [];
+    return;
   }
 
   try {

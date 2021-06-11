@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
-const Bmi = ({ submit }) => {
+const Bmi = ({ submit, darkMode, setDark }) => {
   const [height, setHeight] = useState(0);
   const [weight, setWeight] = useState(0);
   const [bmi, setBmi] = useState(0);
@@ -125,16 +125,40 @@ const Bmi = ({ submit }) => {
   };
 
   return (
-    <div className="col-12 shadow py-2 bg-light rounded">
-      <h1 className="pb-2 heading text-center">BMI Tracker</h1>
+    <div
+      className={
+        darkMode
+          ? "col-12 light-shadow py-2 dark_mode rounded"
+          : "col-12 shadow py-2 bg-light rounded"
+      }
+    >
+      <div className="row heading mb-3">
+        <div className="col-1">
+          {darkMode === false ? (
+            <p onClick={() => setDark(true)}>
+              <i className="fas fa-moon" />
+            </p>
+          ) : (
+            <p onClick={() => setDark(false)}>
+              <i className="fas fa-sun" />
+            </p>
+          )}
+        </div>
+        <div className="col-10">
+          <h1 className="pb-2 text-center">BMI Tracker</h1>
+        </div>
+        <div className="col-1"></div>
+      </div>
       <div className="row no-gutters pt-1">
         <div className="col-6">
           <h5 className="pb-1">Height (in cm)</h5>
-          <Form.Group className="mr-1">
+          <Form.Group>
             <Form.Control
               type="number"
               value={height}
               onChange={updateHeight}
+              className={darkMode ? "bg-dark" : "bg-light"}
+              style={darkMode ? { color: "rgb(219, 219, 219)" } : {}}
             />
           </Form.Group>
         </div>
@@ -145,6 +169,8 @@ const Bmi = ({ submit }) => {
               type="number"
               value={weight}
               onChange={updateWeight}
+              className={darkMode ? "bg-dark" : "bg-light"}
+              style={darkMode ? { color: "rgb(219, 219, 219)" } : {}}
             />
           </Form.Group>
         </div>
@@ -153,7 +179,7 @@ const Bmi = ({ submit }) => {
         <div className="col-6 pr-1">
           <h5>
             Your BMI is {"  "}
-            {bmi < 0.01 || bmi > 260 || !isFinite(bmi) ? "" : bmi}
+            <b>{bmi < 0.01 || bmi > 260 || !isFinite(bmi) ? "" : bmi}</b>
           </h5>
           <h5 style={{ display: "Inline" }}>This BMI falls under{"  "}</h5>
           <h5
@@ -187,40 +213,66 @@ const Bmi = ({ submit }) => {
           <small>The 10 most recent logs will be stored</small>
         </div>
         <div className="col-6 pl-1 pb-2 text-center">
-          <div class="card card_underweight">
-            <div class="p-1">
+          <div
+            className={
+              darkMode
+                ? "bg-dark card card_underweight"
+                : "bg-light card card_underweight"
+            }
+          >
+            <div className="p-1">
               <b className style={{ color: "#359cbb" }}>
                 Underweight
               </b>{" "}
               | &#60; 18.5
             </div>
           </div>
-          <div class="card card_normal">
-            <div class="p-1">
+          <div
+            className={
+              darkMode
+                ? "bg-dark card card_normal"
+                : "bg-light card card_normal"
+            }
+          >
+            <div className="p-1">
               <b className style={{ color: "#8bca60" }}>
                 Normal
               </b>{" "}
               | 18.5 - 24.9
             </div>
           </div>
-          <div class="card card_overweight">
-            <div class="p-1">
+          <div
+            className={
+              darkMode
+                ? "bg-dark card card_overweight"
+                : "bg-light card card_overweight"
+            }
+          >
+            <div className="p-1">
               <b className style={{ color: "#c7c400" }}>
                 Overweight
               </b>{" "}
               | 25 - 29.9
             </div>
           </div>
-          <div class="card card_obese">
-            <div class="p-1">
+          <div
+            className={
+              darkMode ? "bg-dark card card_obese" : "bg-light card card_obese"
+            }
+          >
+            <div className="p-1">
               <b className style={{ color: "#f0a51a" }}>
                 Obese
               </b>{" "}
               | 30 - 34.9
             </div>
           </div>
-          <div class="card card_very">
-            <div class="p-1">
+          <div
+            className={
+              darkMode ? "bg-dark card card_very" : "bg-light card card_very"
+            }
+          >
+            <div className="p-1">
               <b className style={{ color: "#c41414" }}>
                 Very Obese
               </b>{" "}

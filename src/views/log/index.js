@@ -2,27 +2,42 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 
-const Logs = ({ weight, height, id, date, bmi, phrase, deleteCard }) => {
+const Logs = ({
+  weight,
+  height,
+  id,
+  date,
+  bmi,
+  phrase,
+  deleteCard,
+  darkMode,
+}) => {
   const onDelete = () => {
     deleteCard(id);
   };
 
   return (
-    <div className={"card card_" + phrase.split(" ")[0]}>
+    <div
+      className={
+        darkMode
+          ? "card bg-dark card_" + phrase.split(" ")[0]
+          : "card card_" + phrase.split(" ")[0]
+      }
+    >
       <div className="card-content">
-        <div className="card-data p-1">
+        <div className="card-data p-1 mt-2">
           <div className="row">
             <div className="col-3">
-              <a>BMI: {bmi}</a>
+              <p>BMI: {bmi}</p>
             </div>
             <div className="col-3">
-              <a>Weight: {weight} kg</a>
+              <p>Weight: {weight} kg</p>
             </div>
             <div className="col-3">
-              <a>Height: {height} cm</a>
+              <p>Height: {height} cm</p>
             </div>
             <div className="col-2">
-              <a>{date}</a>
+              <p>{date}</p>
             </div>
             <div className="col-1">
               <Button
