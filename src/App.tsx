@@ -30,7 +30,7 @@ const App = () => {
     setLogs(newLogs);
   };
 
-  const onDelete = (id) => {
+  const onDelete = (id: number) => {
     let newLogs = logs.filter((item) => {
       return item.id !== id;
     });
